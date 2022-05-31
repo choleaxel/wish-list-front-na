@@ -6,6 +6,7 @@ import {
   ListItem,
 } from "@mui/material";
 import { FC, useEffect, useState } from "react";
+import { WishForm } from "./components/WishForm";
 import { getWishes, Wish } from "./services/wishes";
 
 const theme = createTheme({
@@ -36,9 +37,12 @@ export const App: FC = () => {
     getWishes().then(setWishes);
   }, []);
 
+  console.log(wishes);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <WishForm />
       <List>
         {wishes.map((wish) => {
           return <ListItem key={wish.name}>{wish.name}</ListItem>;
